@@ -7,11 +7,11 @@ const Movies = ({ movies }) => {
     <div className="underline"></div>
   </div>
     <section className="movieList">
-      <div>
+      
         {movies.map((movie) => {
-          return <Movie key={movie.imdbID} {...movie}></Movie>
+          return <div><Movie key={movie.imdbID} {...movie}></Movie></div>
         })}
-      </div>
+      
     </section>
     </>
   )
