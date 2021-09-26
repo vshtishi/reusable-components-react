@@ -27,6 +27,12 @@ function App() {
 
   }
 
+  const hideSuggestion = (id) => {
+    const newMovies = movies.filter((movie) => movie.id !== id)
+    setMovies(newMovies)
+
+  }
+
   useEffect(() => {
     fetchMovies()
 
