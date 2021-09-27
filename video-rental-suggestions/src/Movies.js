@@ -1,20 +1,27 @@
 import React from "react";
 import Movie from "./Movie";
-const Movies = ({ movies }) => {
-  return ( <>
-    <div className="title">
-    <h2>Suggested Movies</h2>
-    <div className="underline"></div>
-  </div>
-    <section className="movieList">
-      
+const Movies = ({ movies, hideSuggestion }) => {
+  return (
+    <>
+      <div className="title">
+        <h2>Suggested Movies</h2>
+        <div className="underline"></div>
+      </div>
+      <section className="movieList">
         {movies.map((movie) => {
-          return <div><Movie key={movie.imdbID} {...movie}></Movie></div>
+          return (
+            <div key={movie.imdbID}>
+              <Movie
+                key={movie.imdbID}
+                {...movie}
+                hideSuggestion={hideSuggestion}
+              ></Movie>
+            </div>
+          );
         })}
-      
-    </section>
+      </section>
     </>
-  )
+  );
 };
 
 export default Movies;
