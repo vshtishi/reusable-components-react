@@ -189,9 +189,9 @@ p {
 }
 .photo {
   object-fit: cover;
-  height: 200px;
+  height: 100%;
   width: 100%;
-  border: 0.25rem solid var(--clr-gold);
+  border: 0.25rem solid steelblue;
   border-radius: var(--radius);
   display: block;
 }
@@ -212,13 +212,13 @@ p {
 }
 
 @media screen and (min-width: 768px) {
-  .menu-item {
+  .movie {
     grid-template-columns: 225px 1fr;
     gap: 0 1.25rem;
     max-width: 40rem;
   }
   .photo {
-    height: 175px;
+    height: 100%;
   }
 }
 @media screen and (min-width: 1200px) {
@@ -227,6 +227,6 @@ p {
     grid-template-columns: 1fr 1fr;
   }
   .photo {
-    height: 150px;
+    height: 100%;
   }
 }

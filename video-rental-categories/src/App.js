@@ -4,7 +4,22 @@ import Categories from './Categories';
 import items from './data';
 
 function App() {
-  return <h2>Movie Categories</h2>;
+  const [movieItems, setMovieItems] = useState(items)
+  const [categories, setCategories] = useState([])
+
+
+  return (
+    <main>
+      <section className="movies section">
+        <div className="title">
+          <h2>Video Rentals</h2>
+          <div className="underline"></div>
+        </div>
+        <Categories />
+        <MoviesList items={movieItems} />
+      </section>
+    </main>
+  )
 }
 
 export default App;
