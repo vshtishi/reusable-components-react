@@ -35,7 +35,13 @@ const Rating = () => {
     });
   };
 
-  const randomRating = () => {};
+  const randomRating = () => {
+    let randomIndex = Math.floor(Math.random() * ratings.length);
+    if(randomIndex === index){
+        randomIndex = index + 1
+    }
+    setIndex(checkIndex(randomIndex));
+};
 
   return (
     <article className="rating">
