@@ -10,6 +10,15 @@ import {
 const Rating = () => {
   const [index, setIndex] = useState(0);
   const { name, rating, image, header, text } = ratings[index];
+  const starsCount = parseInt(rating.split('/')[0])
+
+   const printStars = (count) => {
+     const row = [];
+     for (let i = 0; i < count; i++) {
+       row.push(<FaStar key={i} className="star-icon" /> );
+     }
+     return row;
+   };
 
   const checkIndex = (index) => {
     if (index > ratings.length - 1) {
@@ -55,7 +64,7 @@ const Rating = () => {
       <br />
       <h4 className="rating-header">{header}</h4>
       <span>
-        <FaStar className="star-icon" />
+       { printStars(starsCount) }
         <p className="rating-score">{rating}</p>
       </span>
       <p className="info">{text}</p>
