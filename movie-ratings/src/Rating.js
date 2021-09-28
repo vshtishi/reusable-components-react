@@ -10,6 +10,33 @@ import {
 const Rating = () => {
   const [index, setIndex] = useState(0);
   const { name, rating, image, header, text } = ratings[index];
+
+  const checkIndex = (index) => {
+    if (index > ratings.length - 1) {
+      return 0;
+    }
+    if (index < 0) {
+      return ratings.length - 1;
+    }
+    return index;
+  };
+
+  const prevRating = () => {
+    setIndex((index) => {
+      let newIndex = index - 1;
+      return checkIndex(newIndex);
+    });
+  };
+
+  const nextRating = () => {
+    setIndex((index) => {
+      let newIndex = index + 1;
+      return checkIndex(newIndex);
+    });
+  };
+
+  const randomRating = () => {};
+
   return (
     <article className="rating">
       <div className="img-container">
@@ -27,14 +54,16 @@ const Rating = () => {
       </span>
       <p className="info">{text}</p>
       <div className="button-container">
-        <button className="prev-btn">
+        <button className="prev-btn" onClick={prevRating}>
           <FaChevronLeft />
         </button>
-        <button className="next-btn">
+        <button className="next-btn" onClick={nextRating}>
           <FaChevronRight />
         </button>
       </div>
-      <button className="random-btn">random rating</button>
+      <button className="random-btn" onClick={randomRating}>
+        random rating
+      </button>
     </article>
   );
 };
