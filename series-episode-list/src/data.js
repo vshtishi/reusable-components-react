@@ -13,7 +13,7 @@ const data = [
   {
     id: "recIL6mJNfWObonls",
     order: 2,
-    title: "Ones and Zeores",
+    title: "Ones and Zeroes",
     date: "July 1, 2015",
     info: {
       directed: "Sam Esmail",
