@@ -5,6 +5,14 @@ function App() {
   const [text, setText] = useState([]);
   const handleSubmit = (e) => {
     e.preventDefault();
+    const amount = parseInt(count)
+    if (count <= 0) {
+      amount = 1
+    }
+    if(count > 10){
+      amount = 10
+    }
+    setText(data.slice(0, amount))
   };
   return (
     <section className="section-center">
@@ -23,22 +31,13 @@ function App() {
         </button>
       </form>
       <article className="lorem-text">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-          labore qui nostrum repellendus doloribus a ratione eum beatae,
-          recusandae ipsam. Quisquam similique iusto recusandae quidem
-          consectetur! Sequi rem magni ipsum, nemo perferendis necessitatibus
-          illo at aliquid esse qui temporibus iure incidunt atque totam? Commodi
-          rerum, nesciunt eum recusandae expedita vero.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-          labore qui nostrum repellendus doloribus a ratione eum beatae,
-          recusandae ipsam. Quisquam similique iusto recusandae quidem
-          consectetur! Sequi rem magni ipsum, nemo perferendis necessitatibus
-          illo at aliquid esse qui temporibus iure incidunt atque totam? Commodi
-          rerum, nesciunt eum recusandae expedita vero.
-        </p>
+        {
+          text.map((item, index) => {
+            return (
+              <p key={index}>{item}</p>
+            )
+          })
+        }
       </article>
     </section>
   );
