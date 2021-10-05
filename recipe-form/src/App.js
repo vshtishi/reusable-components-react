@@ -16,9 +16,11 @@ function App() {
     } else if (!quantity) {
       showAlert(true, "danger", "Please enter quantity");
     } else if (name && quantity && isEditing) {
-      //deal with edit
+      setList(list.map((item)=> {
+
+      })
     } else {
-      //show alert
+      showAlert(true, "success", "Ingredient added successfully");
       const newIngredient = {
         id: new Date().getTime().toString(),
         title: name,
@@ -35,10 +37,28 @@ function App() {
     setAlert({ show, type, msg });
   };
 
+  const clearList = () => {
+    showAlert(true, "danger", "empty ingredient list");
+    setList([]);
+  };
+
+  const removeItem = (id) => {
+    showAlert(true, "danger", "ingredient removed");
+    setList(list.filter((item) => item.id !== id));
+  };
+
+  const editItem = (id) => {
+    const specificItem = list.find((item) => item.id === id)
+    setIsEditing(true)
+    setEditID(id)
+    setName(specificItem.title)
+    setQuantity(specificItem.quantity)
+  };
+
   return (
     <section className="section-center">
       <form className="recipe-form" onSubmit={handleSubmit}>
-        {alert.show && <Alert {...alert} removeAlert={showAlert} />}
+        {alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
         <h3>Recipe</h3>
         <div className="form-control">
           <input
@@ -61,9 +81,11 @@ function App() {
         </div>
       </form>
       <div className="recipe-container">
-        <Recipe items={list} />
+        <Recipe items={list} removeItem={removeItem} editItem={editItem} />
         {list.length > 0 && (
-          <button className="clear-btn">clear ingredients</button>
+          <button className="clear-btn" onClick={clearList}>
+            clear ingredients
+          </button>
         )}
       </div>
     </section>
