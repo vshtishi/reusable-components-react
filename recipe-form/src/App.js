@@ -16,9 +16,18 @@ function App() {
     } else if (!quantity) {
       showAlert(true, "danger", "Please enter quantity");
     } else if (name && quantity && isEditing) {
-      setList(list.map((item)=> {
-
-      })
+      setList(
+        list.map((item) => {
+          if (item.id === editID) {
+            return { ...item, title: name, quantity };
+          }
+          return item;
+        })
+      );
+      setName("");
+      setQuantity("");
+      setEditID(null);
+      setIsEditing(false);
     } else {
       showAlert(true, "success", "Ingredient added successfully");
       const newIngredient = {
@@ -48,11 +57,11 @@ function App() {
   };
 
   const editItem = (id) => {
-    const specificItem = list.find((item) => item.id === id)
-    setIsEditing(true)
-    setEditID(id)
-    setName(specificItem.title)
-    setQuantity(specificItem.quantity)
+    const specificItem = list.find((item) => item.id === id);
+    setIsEditing(true);
+    setEditID(id);
+    setName(specificItem.title);
+    setQuantity(specificItem.quantity);
   };
 
   return (
