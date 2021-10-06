@@ -151,7 +151,7 @@ nav {
 }
 .nav-toggle {
   font-size: 1.5rem;
-  color: var(--clr-primary-5);
+  color: gray;
   background: transparent;
   border-color: transparent;
   transition: var(--transition);
@@ -174,8 +174,8 @@ nav {
   transition: var(--transition);
 }
 .links a:hover {
-  background: var(--clr-primary-8);
-  color: var(--clr-primary-5);
+  background: rgba(199, 102, 102, 0.808);
+  color: darkred;
   padding-left: 1.5rem;
 }
 .social-icons {
