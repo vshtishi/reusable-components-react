@@ -5,7 +5,9 @@ import Home from './Home'
 function App() {
   return (
     <>
-      <h2>Video Rental Sidebar</h2>
+      <Home />
+      <Modal />
+      <Sidebar />
     </>
   )
 }
