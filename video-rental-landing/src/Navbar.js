@@ -33,7 +33,6 @@ const Navbar = () => {
             </button>
           </li>
           <li>
-            {" "}
             <button className="link-btn" onMouseOver={displaySubmenu}>
               company
             </button>
