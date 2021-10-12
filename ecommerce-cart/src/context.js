@@ -8,6 +8,9 @@ const initialState = {
   total: 0,
   amount: 0,
 };
+
+//API URL
+const url = "";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
@@ -29,9 +32,25 @@ const AppProvider = ({ children }) => {
     dispatch({ type: "DECREASE", payload: id });
   };
 
+  const fetchData = async () => {
+    dispatch({ type: "LOADING" });
+    const response = await fetch(url);
+    const cart = await response.json();
+
+    dispatch({ type: "DISPLAY_ITEMS", payload: cart });
+  };
+
+  const toggleAmount = (id, type) => {
+    dispatch({ type: "TOGGLE_AMOUNT", payload: { id, type } });
+  };
+
   useEffect(() => {
-      dispatch({type:'GET_TOTALS'})
-  }, [state.cart])
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    dispatch({ type: "GET_TOTALS" });
+  }, [state.cart]);
 
   return (
     <AppContext.Provider
@@ -40,7 +59,8 @@ const AppProvider = ({ children }) => {
         clearCart,
         remove,
         increase,
-        decrease
+        decrease,
+        toggleAmount,
       }}
     >
       {children}
