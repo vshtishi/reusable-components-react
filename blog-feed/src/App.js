@@ -11,11 +11,12 @@ function App() {
   const [photos, setPhotos] = useState([]);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
+
   const fetchImages = async () => {
     setLoading(true);
     let url;
     const urlPage = `&page=${page}`;
-    const urlQuery = `&query=query`;
+    const urlQuery = `&query=${query}`;
     if (query) {
       url = `${searchUrl}${clientID}${urlPage}${urlQuery}`;
     } else {
@@ -27,16 +28,15 @@ function App() {
       const data = await response.json();
       setPhotos((oldPhotos) => {
         if (query) {
-          return [...oldPhotos, ...data.results];
+          return [...data.results];
         } else {
-          return [...oldPhotos, data];
+          return [...oldPhotos, ...data];
         }
       });
       setLoading(false);
     } catch (error) {
       setLoading(false);
       console.log(error);
-      console.log(url);
     }
   };
 
@@ -46,7 +46,7 @@ function App() {
 
   useEffect(() => {
     const event = window.addEventListener("scroll", () => {
-      if (
+      if (!loading &&
         window.innerHeight + window.scrollY >=
         document.body.scrollHeight - 2
       ) {
