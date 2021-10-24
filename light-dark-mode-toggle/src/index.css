@@ -4,10 +4,16 @@ Global Styles
 ===============
 */
 
-:root {
+
+.light-theme {
   --clr-bcg: #fff;
   --clr-font: #283235;
   --clr-primary: #d25a36;
+}
+.dark-theme {
+  --clr-bcg: rgb(0, 0, 0);
+  --clr-primary: #ff764d;
+  --clr-font: #fff;
 }
 
 *,
