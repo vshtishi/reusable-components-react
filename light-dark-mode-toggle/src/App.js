@@ -3,13 +3,25 @@ import data from "./data";
 import Article from "./Article";
 
 function App() {
-  const [theme, setTheme] = useState('light-theme')
+  const getStorageTheme = () => {
+    let theme = 'light-theme'
+    if (localStorage.getItem('theme')) {
+      theme = localStorage.getItem('theme')
+    }
+    return theme;
+  }
+  
+  const [theme, setTheme] = useState(getStorageTheme());
+  
   useEffect(() => {
     document.documentElement.className = theme;
+    localStorage.setItem('theme', theme)
   }, [theme]);
 
+
+
   const toggleTheme = () => {
-    if(theme === 'light-theme'){
+    if (theme === 'light-theme') {
       setTheme('dark-theme')
     }
     else {
