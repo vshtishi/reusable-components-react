@@ -29,7 +29,7 @@ const AppProvider = ({ children }) => {
   };
   useEffect(() => {
     fetchMovies(`${API_ENDPOINT}&s=${query}`);
-  }, []);
+  }, [query]);
   return (
     <AppContext.Provider value={{ isLoading, error, movies, query, setQuery }}>
       {children}
