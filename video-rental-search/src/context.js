@@ -22,7 +22,6 @@ const AppProvider = ({ children }) => {
         setError({ show: true, msg: data.Error });
       }
       setIsLoading(false);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
