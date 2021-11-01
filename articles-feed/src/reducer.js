@@ -24,6 +24,9 @@ const reducer = (state, action) => {
           (story) => story.objectID !== action.payload
         ),
       };
+      case HANDLE_SEARCH: {
+        return {...state, query: action.payload}
+      }
     default:
       throw new Error(`no matchint ${action.type} action type`);
   }
