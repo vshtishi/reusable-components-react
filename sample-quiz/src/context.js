@@ -32,7 +32,7 @@ const AppProvider = ({ children }) => {
             const data = response.data.results
             if (data.length > 0) {
                 setQuestions(data)
-                setLoading(true)
+                setLoading(false)
                 setWaiting(false)
                 setError(false)
             }
