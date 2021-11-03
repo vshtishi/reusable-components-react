@@ -46,13 +46,32 @@ const AppProvider = ({ children }) => {
         }
     }
 
+    const nextQuestion = () => {
+        setIndex((oldIndex) => {
+            const index = oldIndex + 1
+            if (index > questions.length - 1) {
+                //temporary
+                return 0
+            }
+            return index
+
+        })
+    }
+
+    const checkAnswer = value => {
+        if(value){
+            setCorrect((oldState) => oldState + 1)
+        }
+        nextQuestion()
+    }
+
     useEffect(() => {
         fetchQuestions(tempUrl)
     }, [])
 
     return <AppContext.Provider value={{
         waiting, loading, questions, index,
-        correct, error, isModalOpen
+        correct, error, isModalOpen, checkAnswer, nextQuestion
     }}>{children}</AppContext.Provider>
 }
 // make sure use
