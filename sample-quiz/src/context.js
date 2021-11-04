@@ -50,7 +50,7 @@ const AppProvider = ({ children }) => {
         setIndex((oldIndex) => {
             const index = oldIndex + 1
             if (index > questions.length - 1) {
-                //temporary
+                openModal()
                 return 0
             }
             return index
@@ -59,10 +59,20 @@ const AppProvider = ({ children }) => {
     }
 
     const checkAnswer = value => {
-        if(value){
+        if (value) {
             setCorrect((oldState) => oldState + 1)
         }
         nextQuestion()
+    }
+
+    const openModal = () => {
+        setIsModalOpen(true)
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false)
+        setCorrect(0)
+        setWaiting(true)
     }
 
     useEffect(() => {
@@ -71,7 +81,7 @@ const AppProvider = ({ children }) => {
 
     return <AppContext.Provider value={{
         waiting, loading, questions, index,
-        correct, error, isModalOpen, checkAnswer, nextQuestion
+        correct, error, isModalOpen, closeModal, checkAnswer, nextQuestion
     }}>{children}</AppContext.Provider>
 }
 // make sure use
