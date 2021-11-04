@@ -21,6 +21,11 @@ const AppProvider = ({ children }) => {
     const [index, setIndex] = useState(0)
     const [correct, setCorrect] = useState(0)
     const [error, setError] = useState(false)
+    const [quiz, setQuiz] = useState({
+        amount: 10,
+        category: 'sports',
+        difficulty: 'easy'
+    })
 
     const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -75,13 +80,33 @@ const AppProvider = ({ children }) => {
         setWaiting(true)
     }
 
+    const handleChange = (e) => {
+        console.log(e)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+    }
+
     useEffect(() => {
         fetchQuestions(tempUrl)
     }, [])
 
     return <AppContext.Provider value={{
-        waiting, loading, questions, index,
-        correct, error, isModalOpen, closeModal, checkAnswer, nextQuestion
+        waiting, 
+        loading, 
+        questions, 
+        index,
+        correct, 
+        error, 
+        isModalOpen,
+        quiz,
+        handleChange,
+        handleSubmit, 
+        closeModal, 
+        checkAnswer, 
+        nextQuestion
     }}>{children}</AppContext.Provider>
 }
 // make sure use
